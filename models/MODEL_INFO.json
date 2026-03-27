@@ -1,0 +1,13 @@
+{
+  "generator": {
+    "profile": "compact",
+    "alias": "omni-law-gen.gguf",
+    "size_mb": 379,
+    "quant": "unknown",
+    "notes": "Local offline generator alias reverted to the previous faster GGUF backup"
+  },
+  "embedder": {
+    "size_mb": 80,
+    "alias": "omni-law-embed.gguf"
+  }
+}
