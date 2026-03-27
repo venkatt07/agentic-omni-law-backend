@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "central_acts_zenodo",
+      "name": "Central Acts from India Code PDFs (Zenodo)",
+      "kind": "acts",
+      "enabled": true,
+      "access": {
+        "method": "zenodo_record_files",
+        "record_api_url": "https://zenodo.org/api/records/5088102"
+      },
+      "license": "CC-BY-4.0 (as listed in Zenodo record)",
+      "attribution": "Dataset creators listed on Zenodo record 5088102",
+      "notes": "Annotated dataset of Central Acts enacted by Indian Parliament for legal research.",
+      "starter": {
+        "default_limit": 30,
+        "allow_patterns": [
+          "contract",
+          "arbitration",
+          "consumer",
+          "evidence",
+          "information technology",
+          "transfer of property",
+          "civil procedure",
+          "specific relief",
+          "limitation",
+          "registration",
+          "stamps",
+          "rent",
+          "tenancy"
+        ],
+        "prefer_extensions": [
+          ".txt",
+          ".json",
+          ".csv",
+          ".pdf"
+        ]
+      }
+    },
+    {
+      "id": "sc_judgments_aws",
+      "name": "Indian Supreme Court Judgments (AWS Open Data)",
+      "kind": "sc",
+      "enabled": true,
+      "access": {
+        "method": "aws_s3_prefix",
+        "registry_url": "https://registry.opendata.aws/india-judgments/",
+        "s3_uri": "s3://indian-supreme-court-judgments/",
+        "http_manifest_url": "",
+        "http_base_url": ""
+      },
+      "license": "Refer to AWS Open Data listing and underlying publisher terms",
+      "attribution": "AWS Open Data program and original judicial data publishers",
+      "notes": "Starter pack downloads only a subset. Uses AWS CLI when available; HTTP fallback if manifest/base URL configured.",
+      "starter": {
+        "default_limit": 2000,
+        "prefer_extensions": [
+          ".pdf",
+          ".txt"
+        ]
+      }
+    },
+    {
+      "id": "hc_judgments_aws",
+      "name": "Indian High Court Judgments (AWS Open Data)",
+      "kind": "hc",
+      "enabled": true,
+      "access": {
+        "method": "aws_s3_prefix",
+        "registry_url": "https://registry.opendata.aws/india-judgments/",
+        "s3_uri": "s3://indian-high-court-judgments/",
+        "http_manifest_url": "",
+        "http_base_url": ""
+      },
+      "license": "Refer to AWS Open Data listing and underlying publisher terms",
+      "attribution": "AWS Open Data program and original judicial data publishers",
+      "notes": "Optional in starter pack; lower default size than SC.",
+      "starter": {
+        "default_limit": 500,
+        "prefer_extensions": [
+          ".pdf",
+          ".txt"
+        ]
+      }
+    }
+  ]
+}
