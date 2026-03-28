@@ -66,3 +66,21 @@ runsRouter.post("/:run_id/cancel", requireAuth, validateParams(paramsSchema), as
     next(e);
   }
 });
+
+runsRouter.post("/:run_id/stop", requireAuth, validateParams(paramsSchema), async (req, res, next) => {
+  try {
+    const runId = asParam(req.params.run_id);
+    const run = await prisma.run.findUnique({
+      where: { id: runId },
+      include: { case: true },
+    });
+    if (!run || run.case.userId !== req.auth!.userId) {
+      return res.status(404).json({ message: "Run not found" });
+    }
+    // Best-effort abort without mutating run status.
+    runCancellationService.cancel(runId);
+    res.json({ ok: true, run_id: runId, status: "stop_requested" });
+  } catch (e) {
+    next(e);
+  }
+});
