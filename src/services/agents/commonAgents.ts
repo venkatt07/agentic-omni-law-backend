@@ -2565,13 +2565,13 @@ function detectLikelyNonLegalCaseInput(text: string) {
     legalSignals === 0 ? "no clear legal dispute terms detected" : null,
     caseNarrativeSignals === 0 ? "no case narrative/remedy terms detected" : null,
   ].filter(Boolean) as string[];
-  const likelyNonLegalByTerms = nonLegalSignals >= 2 && legalSignals <= 1 && formalLegalDocSignals === 0;
+  const likelyNonLegalByTerms = nonLegalSignals >= 3 && legalSignals === 0 && formalLegalDocSignals === 0;
   const likelyNonLegalByNoCaseNarrative =
     legalSignals === 0 &&
     caseNarrativeSignals === 0 &&
     timelineSignals === 0 &&
     formalLegalDocSignals === 0 &&
-    tokens.length >= 8;
+    tokens.length >= 16;
   const likelyNonLegal = likelyNonLegalByTerms || likelyNonLegalByNoCaseNarrative;
   return { likelyNonLegal, legalSignals, nonLegalSignals, caseNarrativeSignals, timelineSignals, formalLegalDocSignals, reasons };
 }
@@ -2587,7 +2587,7 @@ function detectLikelyMixedCaseBundleInput(text: string) {
   const commercialSignals = ["vendor", "erp", "implementation", "milestones", "change order", "liquidated damages"];
   const hasTenancy = tenancySignals.filter((s) => lower.includes(s)).length >= 2;
   const hasCommercial = commercialSignals.filter((s) => lower.includes(s)).length >= 2;
-  const likelyMixed = repeatedCaseMarkers >= 3 || (hasTenancy && hasCommercial);
+  const likelyMixed = repeatedCaseMarkers >= 5 || (hasTenancy && hasCommercial);
   return { likelyMixed, repeatedCaseMarkers, hasTenancy, hasCommercial };
 }
 
