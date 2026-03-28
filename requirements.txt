@@ -1,0 +1,5 @@
+requests>=2.31.0
+pypdf>=4.2.0
+pdfminer.six>=20231228
+PyMuPDF>=1.24.7
+gguf>=0.8.1
