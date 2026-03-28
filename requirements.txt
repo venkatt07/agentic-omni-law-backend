@@ -1,5 +1,9 @@
 requests>=2.31.0
-pypdf>=4.2.0
 pdfminer.six>=20231228
-PyMuPDF>=1.24.7
-gguf>=0.8.1
+# Python 3.8+ supported versions
+pypdf>=4.2.0; python_version >= "3.8"
+PyMuPDF>=1.24.7; python_version >= "3.8"
+gguf>=0.8.1; python_version >= "3.8"
+# Python 3.7 fallback pins
+pypdf==3.17.4; python_version < "3.8"
+PyMuPDF==1.22.5; python_version < "3.8"
